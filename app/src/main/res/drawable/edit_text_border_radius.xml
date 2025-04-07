@@ -4,5 +4,5 @@
     <solid android:color="#FFFFFF" /> <!-- Fondo del EditText -->
     <stroke
         android:width="2dp"
-        android:color="#2196F3" /> <!-- Color y ancho del borde -->
+        android:color="#455156" /> <!-- Color y ancho del borde -->
 </shape>
