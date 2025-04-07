@@ -27,6 +27,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="185dp"
                 android:background="#606665"
+                android:elevation="8dp"
                 app:cardBackgroundColor="#606665"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,16 +38,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="68dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="320dp"
+                        app:layout_constraintBottom_toTopOf="@+id/textView3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/logo_small" />
+
                     <EditText
                         android:id="@+id/editTextText4"
                         android:layout_width="344dp"
                         android:layout_height="47dp"
-                        android:layout_marginBottom="24dp"
-                        android:background="#FFFFFF"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/edit_text_border_radius"
+                        android:elevation="8dp"
                         android:ems="10"
                         android:hint="Email"
                         android:inputType="text"
+                        android:padding="10dp"
                         android:text=""
+                        android:textAlignment="gravity"
                         app:layout_constraintBottom_toTopOf="@+id/editTextText5"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -57,10 +72,14 @@
                         android:layout_width="344dp"
                         android:layout_height="47dp"
                         android:layout_marginBottom="24dp"
-                        android:background="#FFFFFF"
+                        android:background="@drawable/edit_text_border_radius"
+                        android:elevation="8dp"
                         android:ems="10"
+                        android:hint="Password"
                         android:inputType="text"
-                        android:text="Name"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textAlignment="gravity"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -71,45 +90,73 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="90dp"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="90dp"
-                        android:layout_marginBottom="38dp"
-                        android:text="Inicio Sesion"
+                        android:fontFamily="@font/outfit_semibold"
+                        android:text="Inicio de Sesion"
                         android:textColor="#FFFFFF"
                         android:textSize="36sp"
-                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/editTextText4"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="344dp"
-                android:layout_height="47dp"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="34dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="34dp"
+                android:backgroundTint="@color/azul"
+                android:fontFamily="@font/nunito_semibold"
+                android:hapticFeedbackEnabled="false"
                 android:text="Button"
+                android:textAlignment="center"
+                android:textSize="32sp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:rippleColor="#FFFFFF"
+                tools:visibility="visible"
+                />
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="344dp"
-                android:layout_height="47dp"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="34dp"
                 android:layout_marginEnd="34dp"
+                android:backgroundTint="@color/naranja"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="Button"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button3" />
+                app:layout_constraintTop_toBottomOf="@+id/button3"
+                app:layout_constraintVertical_bias="0.582" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="380dp"
+                android:layout_height="183dp"
+                android:layout_marginBottom="4dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
