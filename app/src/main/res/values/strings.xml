@@ -3,6 +3,11 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login_button">Login</string>
-   <string name="register_button">Register</string>
+    <string name="register_button">Register</string>
     <string name="login_title">Login</string>
+    <string name="name">Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="nickname">Nick Name</string>
+    <string name="phonenumber">Phone Number</string>
+    <string name="porfilepicture">Porfile Picture</string>
 </resources>
