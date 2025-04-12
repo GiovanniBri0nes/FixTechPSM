@@ -14,7 +14,7 @@
         android:background="#455156">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonReg"
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:layout_marginBottom="3dp"
@@ -52,9 +52,8 @@
                     android:layout_marginBottom="32dp"
                     android:background="@drawable/edit_text_border_radius"
                     android:ems="10"
-                    android:inputType="text"
-                    android:text=""
                     android:hint="@string/porfilepicture"
+                    android:inputType="text"
                     android:padding="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

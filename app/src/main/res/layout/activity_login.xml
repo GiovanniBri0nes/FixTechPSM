@@ -5,10 +5,11 @@
     <data>
         <variable
             name="loginActivity"
-            type="com.sisMoviles.fixtech.MainActivity" />
+            type="com.sisMoviles.fixtech.LoginActivity" />
     </data>
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -108,7 +109,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/login_btn_inicosesion"
+                android:id="@+id/login_btn_iniciosesion"
                 android:layout_width="250dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="34dp"
@@ -143,12 +144,14 @@
                 android:textSize="32sp"
                 app:cornerRadius="10dp"
                 android:elevation="15dp"
+                android:onClick="@{() -> loginActivity.navigateToRegister()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/login_btn_inicosesion"
-                app:layout_constraintVertical_bias="0.582" />
+                app:layout_constraintTop_toBottomOf="@+id/login_btn_iniciosesion"
+                app:layout_constraintVertical_bias="0.582"
+               />
 
             <ImageView
                 android:id="@+id/imageView2"
