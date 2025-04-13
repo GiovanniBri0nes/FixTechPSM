@@ -14,40 +14,8 @@
         android:background="#455156">
 
     <!-- Encabezado -->
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="8dp"
-        android:background="#F8F4F9"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
 
-        <ImageView
-            android:id="@+id/icon_home"
-            android:layout_width="41dp"
-            android:layout_height="41dp"
-            android:src="@drawable/home" />
-
-        <ImageView
-            android:id="@+id/logo_fixtech"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_weight="1"
-            android:src="@drawable/tech"
-            android:scaleType="fitCenter" />
-
-        <ImageView
-            android:id="@+id/icon_profile"
-            android:layout_width="41dp"
-            android:layout_height="41dp"
-            android:src="@drawable/user" />
-    </LinearLayout>
-
-    <!-- Card principal -->
+        <!-- Card principal -->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewEdit"
