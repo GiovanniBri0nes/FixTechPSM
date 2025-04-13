@@ -10,4 +10,10 @@
     <string name="nickname">Nick Name</string>
     <string name="phonenumber">Phone Number</string>
     <string name="porfilepicture">Porfile Picture</string>
+    <string name="save_as_draft">Save as draft</string>
+    <string name="title">Title</string>
+    <string name="post">Post</string>
+    <string name="description">Description</string>
+    <string name="btn_addimage">Add image</string>
+    <string name="btn_publish">Publish</string>
 </resources>
