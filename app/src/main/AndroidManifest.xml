@@ -16,7 +16,10 @@
         <activity android:name=".RegistroActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".BorradorActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
