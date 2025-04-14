@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sisMoviles.fixtech.adapters.BorradorAdapter
 import com.sisMoviles.fixtech.databinding.ActivityBorradoresBinding
+import com.sisMoviles.fixtech.modelos.BorradorModel
 
 
 class BorradorActivity : AppCompatActivity() {
