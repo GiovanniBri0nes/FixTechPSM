@@ -188,14 +188,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/logo_small" />
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="51dp"
-                    android:layout_height="49dp"
-                    app:srcCompat="@android:drawable/ic_menu_gallery"
-                    tools:layout_editor_absoluteX="307dp"
-                    tools:layout_editor_absoluteY="549dp" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

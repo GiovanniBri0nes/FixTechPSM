@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateBorradores() {
         botonInicioSesion.setOnClickListener {
-            val intent = Intent(this, BorradorActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }

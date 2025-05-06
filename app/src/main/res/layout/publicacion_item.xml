@@ -12,7 +12,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/grisclaro">
+        app:cardBackgroundColor="@color/grisclaro"
+        android:layout_margin="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,9 +21,9 @@
 
             <ImageView
                 android:id="@+id/logosmall3"
-                android:layout_width="69dp"
-                android:layout_height="49dp"
-                android:layout_marginEnd="268dp"
+                android:layout_width="61dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="248dp"
                 app:layout_constraintEnd_toStartOf="@+id/pi_txt_fecha"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -30,18 +31,22 @@
 
             <TextView
                 android:id="@+id/pi_txt_fecha"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
+                android:layout_width="68dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
                 android:text="12-11-2003"
+                app:layout_constraintBottom_toTopOf="@+id/imageView8"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logosmall3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="280dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginEnd="7dp"
                 android:layout_marginBottom="72dp"
                 app:layout_constraintBottom_toTopOf="@+id/pi_txt_descripcion"
                 app:layout_constraintEnd_toStartOf="@+id/imageView9"
@@ -53,38 +58,35 @@
                 android:id="@+id/imageView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="72dp"
                 app:layout_constraintBottom_toTopOf="@+id/pi_txt_descripcion"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/pi_txt_fecha"
                 app:srcCompat="@drawable/borrar" />
 
             <ImageView
                 android:id="@+id/pi_img_usuario"
-                android:layout_width="69dp"
-                android:layout_height="72dp"
-                android:layout_marginBottom="19dp"
+                android:layout_width="60dp"
+                android:layout_height="75dp"
                 app:layout_constraintBottom_toTopOf="@+id/pi_img_imagen"
-                app:layout_constraintEnd_toStartOf="@+id/pi_txt_titulo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logosmall3"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/profile" />
 
             <TextView
                 android:id="@+id/pi_txt_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="141dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="131dp"
                 android:fontFamily="@font/outfit_semibold"
                 android:text="Titulo Publicacion"
                 android:textColor="@color/azul"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/pi_txt_descripcion"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/pi_img_usuario"
                 app:layout_constraintTop_toBottomOf="@+id/pi_txt_usuario" />
 
@@ -92,31 +94,34 @@
                 android:id="@+id/pi_txt_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="86dp"
-                android:layout_marginEnd="242dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="232dp"
                 android:fontFamily="@font/outfit_semibold"
                 android:text="VocalEm"
                 android:textColor="@color/naranja"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/pi_txt_titulo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/pi_img_usuario"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/logosmall3" />
 
             <TextView
                 android:id="@+id/pi_txt_descripcion"
                 android:layout_width="333dp"
                 android:layout_height="19dp"
-                android:layout_marginStart="69dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginStart="59dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="TextView"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/pi_img_imagen"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_titulo" />
+                app:layout_constraintTop_toBottomOf="@+id/pi_txt_titulo"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/pi_img_imagen"
@@ -124,8 +129,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_descripcion"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
