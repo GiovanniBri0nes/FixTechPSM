@@ -1,8 +1,9 @@
-package com.sisMoviles.fixtech
+package com.sisMoviles.fixtech.viewHolders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.sisMoviles.fixtech.databinding.BorradorItemBinding
+import com.sisMoviles.fixtech.modelos.BorradorModel
 
 class BorradorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
