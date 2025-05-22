@@ -31,7 +31,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="421dp"
+                android:layout_height="match_parent"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="23dp">
 
@@ -48,65 +48,102 @@
                     android:id="@+id/txtEditarPerfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="84dp"
+                    android:layout_marginBottom="32dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="Editar perfil"
                     android:textColor="#FFFFFF"
                     android:textSize="36sp"
-                    tools:layout_editor_absoluteX="84dp"
-                    tools:layout_editor_absoluteY="16dp" />
+                    app:layout_constraintBottom_toTopOf="@+id/ivEditarUserImg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/logosmall"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/ivEditarUserImg"
                     android:layout_width="112dp"
                     android:layout_height="114dp"
+                    android:layout_marginStart="124dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/circle_background"
                     android:scaleType="centerCrop"
                     android:src="@drawable/profile"
-                    tools:layout_editor_absoluteX="118dp"
-                    tools:layout_editor_absoluteY="100dp" />
-
-                <ImageView
-                    android:id="@+id/icon_edit_image"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/anadirimagen"
-                    tools:layout_editor_absoluteX="215dp"
-                    tools:layout_editor_absoluteY="168dp" />
+                    app:layout_constraintBottom_toTopOf="@+id/tvEditarUserNombre"
+                    app:layout_constraintEnd_toStartOf="@+id/ibEditarUserCargarImg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEditarPerfil" />
 
                 <TextView
-                    android:id="@+id/user_full_name"
+                    android:id="@+id/tvEditarUserNombre"
                     android:layout_width="244dp"
                     android:layout_height="35dp"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_marginEnd="58dp"
+                    android:layout_marginBottom="17dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="Fernando Briones Tristan"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
-                    tools:layout_editor_absoluteX="58dp"
-                    tools:layout_editor_absoluteY="229dp" />
+                    app:layout_constraintBottom_toTopOf="@+id/etEditarUserNickname"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivEditarUserImg" />
 
                 <EditText
-                    android:id="@+id/editTextNewNickname"
+                    android:id="@+id/etEditarUserNickname"
                     android:layout_width="242dp"
                     android:layout_height="43dp"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/edit_text_border_radius"
                     android:ems="10"
                     android:hint="New nickname"
                     android:inputType="text"
                     android:padding="10dp"
-                    tools:layout_editor_absoluteX="58dp"
-                    tools:layout_editor_absoluteY="278dp" />
+                    app:layout_constraintBottom_toTopOf="@+id/etEditarUserPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEditarUserNombre" />
 
                 <EditText
-                    android:id="@+id/editTextNewPassword"
+                    android:id="@+id/etEditarUserPassword"
                     android:layout_width="242dp"
                     android:layout_height="47dp"
+                    android:layout_marginStart="58dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginBottom="66dp"
                     android:background="@drawable/edit_text_border_radius"
                     android:ems="10"
                     android:hint="New password"
                     android:inputType="text"
                     android:padding="10dp"
-                    tools:layout_editor_absoluteX="58dp"
-                    tools:layout_editor_absoluteY="343dp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etEditarUserNickname" />
+
+                <ImageButton
+                    android:id="@+id/ibEditarUserCargarImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintBottom_toTopOf="@+id/tvEditarUserNombre"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivEditarUserImg"
+                    app:layout_constraintTop_toBottomOf="@+id/ivEditarUserImg"
+                    app:layout_constraintVertical_bias="0.666"
+                    app:srcCompat="@drawable/anadirimagen" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,22 +154,22 @@
             android:id="@+id/buttonsave"
             android:layout_width="277dp"
             android:layout_height="64dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
             android:backgroundTint="@color/azul"
             android:text="Save Changes"
             android:textSize="32sp"
             app:cornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonback"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewEdit"
-            app:layout_constraintVertical_bias="0.17" />
+            app:layout_constraintTop_toBottomOf="@+id/cardViewEdit" />
 
         <Button
             android:id="@+id/buttonback"
             android:layout_width="277dp"
             android:layout_height="64dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginBottom="24dp"
             android:backgroundTint="@color/naranja"
             android:text="Back"
             android:textSize="32sp"
@@ -140,8 +177,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewEdit"
-            app:layout_constraintVertical_bias="0.79" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonsave" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

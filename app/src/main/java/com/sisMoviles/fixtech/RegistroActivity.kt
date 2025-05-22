@@ -111,7 +111,7 @@ class RegistroActivity : AppCompatActivity() {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             uriImagenSeleccionada = data.data
-            binding.imageView3.setImageURI(uriImagenSeleccionada)
+            binding.ivRegistroPreview.setImageURI(uriImagenSeleccionada)
         }
     }
 

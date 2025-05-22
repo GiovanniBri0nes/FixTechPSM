@@ -23,60 +23,35 @@
                 android:id="@+id/logosmall3"
                 android:layout_width="61dp"
                 android:layout_height="45dp"
-                android:layout_marginEnd="248dp"
-                app:layout_constraintEnd_toStartOf="@+id/pi_txt_fecha"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo_small" />
 
             <TextView
-                android:id="@+id/pi_txt_fecha"
-                android:layout_width="68dp"
-                android:layout_height="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="12dp"
+                android:id="@+id/tvPublicacionItemFecha"
+                android:layout_width="106dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 android:text="12-11-2003"
-                app:layout_constraintBottom_toTopOf="@+id/imageView8"
+                android:textAlignment="viewEnd"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/logosmall3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="240dp"
-                android:layout_marginEnd="7dp"
-                android:layout_marginBottom="72dp"
-                app:layout_constraintBottom_toTopOf="@+id/pi_txt_descripcion"
-                app:layout_constraintEnd_toStartOf="@+id/imageView9"
-                app:layout_constraintStart_toEndOf="@+id/logosmall3"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_fecha"
-                app:srcCompat="@drawable/borrar" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="72dp"
-                app:layout_constraintBottom_toTopOf="@+id/pi_txt_descripcion"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_fecha"
-                app:srcCompat="@drawable/borrar" />
-
-            <ImageView
-                android:id="@+id/pi_img_usuario"
+                android:id="@+id/ivPublicacionItemUserImg"
                 android:layout_width="60dp"
                 android:layout_height="75dp"
-                app:layout_constraintBottom_toTopOf="@+id/pi_img_imagen"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/ivPublicacionItemPublicacionImg"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logosmall3"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/profile" />
 
             <TextView
-                android:id="@+id/pi_txt_titulo"
+                android:id="@+id/tvPublicacionItemTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -87,11 +62,11 @@
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/pi_img_usuario"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_usuario" />
+                app:layout_constraintStart_toEndOf="@+id/ivPublicacionItemUserImg"
+                app:layout_constraintTop_toBottomOf="@+id/tvPublicacionItemUsername" />
 
             <TextView
-                android:id="@+id/pi_txt_usuario"
+                android:id="@+id/tvPublicacionItemUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -103,35 +78,52 @@
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/pi_img_usuario"
+                app:layout_constraintStart_toEndOf="@+id/ivPublicacionItemUserImg"
                 app:layout_constraintTop_toBottomOf="@+id/logosmall3" />
 
             <TextView
-                android:id="@+id/pi_txt_descripcion"
-                android:layout_width="333dp"
-                android:layout_height="19dp"
-                android:layout_marginStart="59dp"
+                android:id="@+id/tvPublicacionItemDescripcion"
+                android:layout_width="369dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nunito_semibold"
                 android:text="TextView"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/pi_img_imagen"
+                app:layout_constraintBottom_toTopOf="@+id/ivPublicacionItemPublicacionImg"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pi_txt_titulo"
+                app:layout_constraintTop_toBottomOf="@+id/tvPublicacionItemTitulo"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
-                android:id="@+id/pi_img_imagen"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/ivPublicacionItemPublicacionImg"
+                android:layout_width="362dp"
+                android:layout_height="253dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.483"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPublicacionItemDescripcion"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <ImageButton
+                android:id="@+id/ibPublicacionItemBorrar"
+                android:layout_width="53dp"
+                android:layout_height="51dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="41dp"
+                android:background="@color/grisclaro"
+                app:layout_constraintBottom_toTopOf="@+id/tvPublicacionItemDescripcion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPublicacionItemFecha"
+                app:srcCompat="@drawable/borrar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
