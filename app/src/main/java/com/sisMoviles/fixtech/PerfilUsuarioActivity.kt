@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.sisMoviles.fixtech.adapters.PublicacionAdapter
@@ -21,6 +22,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+import com.sisMoviles.fixtech.data.AppDatabase
+import com.sisMoviles.fixtech.data.local.UsuarioEntity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+
 class PerfilUsuarioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPerfilusuarioBinding
@@ -32,6 +40,13 @@ class PerfilUsuarioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilusuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val database = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "fixtech-db"
+        ).build()
+
 
         val prefs = getSharedPreferences("fixtech_prefs", MODE_PRIVATE)
         idSesion = prefs.getInt("id", -1)
@@ -172,7 +187,7 @@ class PerfilUsuarioActivity : AppCompatActivity() {
             binding.tvPerfilTelefono.text = telefono
 
             Glide.with(this)
-                .load("http://10.0.2.2/$fotoPerfil")
+                .load("http://44.211.143.122/$fotoPerfil")
                 .placeholder(R.drawable.profile)
                 .circleCrop()
                 .into(binding.ivPerfilUserImg)
@@ -180,27 +195,56 @@ class PerfilUsuarioActivity : AppCompatActivity() {
     }
 
     private fun cargarDatosUsuario(id: Int) {
-        RetrofitClient.instance.obtenerUsuarioPorId(id)
-            .enqueue(object : Callback<UsuarioModel> {
-                override fun onResponse(call: Call<UsuarioModel>, response: Response<UsuarioModel>) {
-                    if (response.isSuccessful) {
-                        val usuario = response.body() ?: return
-                        binding.tvPerfilNombre.text = "${usuario.nombre} ${usuario.apellidos}"
-                        binding.tvPerfilUser.text = usuario.nickname
-                        binding.tvPerfilCorreo.text = usuario.correo
-                        binding.tvPerfilTelefono.text = usuario.telefono
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitClient.instance.obtenerUsuarioPorId(id).execute()
+                if (response.isSuccessful) {
+                    val usuario = response.body()!!
+                    val usuarioEntity = UsuarioEntity(
+                        id = usuario.id,
+                        nombre = usuario.nombre,
+                        apellidos = usuario.apellidos,
+                        correo = usuario.correo,
+                        telefono = usuario.telefono,
+                        nickname = usuario.nickname,
+                        foto_perfil = usuario.foto_perfil
+                    )
 
-                        Glide.with(this@PerfilUsuarioActivity)
-                            .load("http://10.0.2.2/${usuario.foto_perfil}")
-                            .placeholder(R.drawable.profile)
-                            .circleCrop()
-                            .into(binding.ivPerfilUserImg)
+                    AppDatabase.getDatabase(applicationContext).usuarioDao().insertar(usuarioEntity)
+
+                    runOnUiThread {
+                        mostrarDatosUsuario(usuarioEntity)
                     }
+                } else {
+                    cargarUsuarioDesdeLocal(id)
                 }
+            } catch (e: Exception) {
+                cargarUsuarioDesdeLocal(id)
+            }
+        }
+    }
 
-                override fun onFailure(call: Call<UsuarioModel>, t: Throwable) {
-                    Log.e("PerfilAPI", "Fallo al obtener usuario: ${t.message}", t)
+    private fun cargarUsuarioDesdeLocal(id: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val usuarioLocal = AppDatabase.getDatabase(applicationContext).usuarioDao().obtenerPorId(id)
+            usuarioLocal?.let {
+                runOnUiThread {
+                    mostrarDatosUsuario(it)
                 }
-            })
+            }
+        }
+    }
+
+    private fun mostrarDatosUsuario(usuario: UsuarioEntity) {
+        binding.tvPerfilNombre.text = "${usuario.nombre} ${usuario.apellidos}"
+        binding.tvPerfilUser.text = usuario.nickname
+        binding.tvPerfilCorreo.text = usuario.correo
+        binding.tvPerfilTelefono.text = usuario.telefono
+
+        Glide.with(this)
+            .load("http://44.211.143.122/${usuario.foto_perfil}")
+            .placeholder(R.drawable.profile)
+            .circleCrop()
+            .into(binding.ivPerfilUserImg)
     }
 }

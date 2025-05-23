@@ -44,7 +44,7 @@ class EditarPerfilActivity : AppCompatActivity() {
         binding.etEditarUserNickname.setText(nickname)
 
         Glide.with(this)
-            .load("http://10.0.2.2/$fotoPerfil")
+            .load("http://44.211.143.122/$fotoPerfil")
             .placeholder(R.drawable.profile)
             .circleCrop()
             .into(binding.ivEditarUserImg)

@@ -48,7 +48,7 @@ class CrearPublicacionActivity : AppCompatActivity() {
 
             imagenOriginal = extras?.getString("imagen", "")
             if (!imagenOriginal.isNullOrEmpty()) {
-                val urlCompleta = "http://10.0.2.2/$imagenOriginal"
+                val urlCompleta = "http://44.211.143.122/$imagenOriginal"
                 Glide.with(this)
                     .load(urlCompleta)
                     .placeholder(android.R.drawable.ic_menu_gallery)

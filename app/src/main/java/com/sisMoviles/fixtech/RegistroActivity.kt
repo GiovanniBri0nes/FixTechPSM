@@ -91,6 +91,8 @@ class RegistroActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Toast.makeText(this@RegistroActivity, "Usuario registrado con imagen", Toast.LENGTH_SHORT).show()
                         Log.d("RegistroAPI", "Registro exitoso: ${response.code()}")
+                        val intent = Intent(this@RegistroActivity, LoginActivity::class.java)
+                        startActivity(intent)
                     } else {
                         Log.e("RegistroAPI", "Error en respuesta: ${response.code()} - ${response.errorBody()?.string()}")
                         Toast.makeText(this@RegistroActivity, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+
 }
 
 android {
@@ -42,6 +43,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
     implementation(libs.glide)
     kapt(libs.glide.compiler)
     implementation(libs.androidx.core.ktx)

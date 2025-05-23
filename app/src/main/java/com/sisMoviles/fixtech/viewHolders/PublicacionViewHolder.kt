@@ -24,14 +24,14 @@ class PublicacionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.ibPublicacionItemBorrar.visibility =
             if (publicacionModel.id_usuario == idSesion) View.VISIBLE else View.GONE
 
-        val urlUsuario = "http://10.0.2.2/${publicacionModel.foto_perfil}"
+        val urlUsuario = "http://44.211.143.122/${publicacionModel.foto_perfil}"
         Glide.with(binding.root.context)
             .load(urlUsuario)
             .placeholder(R.drawable.profile)
             .circleCrop()
             .into(binding.ivPublicacionItemUserImg)
 
-        val urlImagen = "http://10.0.2.2/${publicacionModel.imagen}"
+        val urlImagen = "http://44.211.143.122/${publicacionModel.imagen}"
         Glide.with(binding.root.context)
             .load(urlImagen)
             .placeholder(android.R.drawable.ic_menu_gallery)
