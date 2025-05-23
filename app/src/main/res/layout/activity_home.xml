@@ -14,20 +14,37 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView4"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="332dp"
+            android:layout_width="409dp"
+            android:layout_height="94dp"
+            android:layout_marginBottom="3dp"
             android:background="@color/grisescuro"
             app:cardBackgroundColor="@color/grisescuro"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/rc_homepublicaciones"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/head_home"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/head_home">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+                android:layout_width="410dp"
                 android:layout_height="match_parent">
+
+
+                <Spinner
+                    android:id="@+id/spinnerOrden"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="7dp"
+                    android:backgroundTint="@color/white"
+                    android:entries="@array/opciones_orden"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etHomeBuscar" />
 
                 <EditText
                     android:id="@+id/etHomeBuscar"
@@ -45,7 +62,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ibHomeBuscar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageButton
                     android:id="@+id/ibHomeBuscar"
@@ -61,6 +79,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/ibHomeAgregarPublicacion"
                     app:layout_constraintStart_toEndOf="@+id/etHomeBuscar"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.169"
                     app:srcCompat="@android:drawable/ic_menu_search" />
 
                 <ImageButton
@@ -74,6 +93,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.169"
                     app:srcCompat="@android:drawable/ic_menu_add" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,7 +144,6 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="1dp"
             android:textAlignment="center"

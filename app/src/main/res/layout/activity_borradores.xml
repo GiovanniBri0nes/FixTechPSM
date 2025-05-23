@@ -25,25 +25,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" >
 
-            <ImageView
-                android:id="@+id/icon_home"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:src="@drawable/home" />
+            <ImageButton
+                android:id="@+id/ibBorradorHome"
+                android:layout_width="6dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/home" />
 
             <ImageView
                 android:id="@+id/logo_fixtech"
-                android:layout_width="0dp"
+                android:layout_width="212dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
-                android:src="@drawable/tech"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/tech" />
 
-            <ImageView
-                android:id="@+id/icon_profile"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:src="@drawable/user" />
+            <ImageButton
+                android:id="@+id/ibBorradorUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/user" />
+
         </LinearLayout>
 
 

@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,16 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.spinnerOrden.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val orden = if (position == 0) "desc" else "asc"
+                cargarPublicaciones(orden)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
 
         binding.ibHomeBuscar.setOnClickListener {
             val texto = binding.etHomeBuscar.text.toString().trim()
@@ -58,8 +70,8 @@ class HomeActivity : AppCompatActivity() {
         cargarPublicaciones()
     }
 
-    private fun cargarPublicaciones() {
-        RetrofitClient.instance.obtenerPublicaciones()
+    private fun cargarPublicaciones(orden: String = "desc") {
+        RetrofitClient.instance.obtenerPublicacionesOrdenadas(orden)
             .enqueue(object : Callback<List<PublicacionModel>> {
                 override fun onResponse(
                     call: Call<List<PublicacionModel>>,
@@ -67,36 +79,52 @@ class HomeActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         publicacionesList = response.body() ?: emptyList()
-
-                        // 🔁 Adapter con click que abre perfil del autor
                         adapter = PublicacionAdapter(
                             publicacionesList,
                             onItemClick = { publicacion ->
                                 val intent = Intent(this@HomeActivity, PerfilUsuarioActivity::class.java)
                                 intent.putExtra("id_perfil", publicacion.id_usuario)
                                 startActivity(intent)
+                            },
+                            onDeleteClick = { publicacion ->
+                                mostrarDialogoEliminar(publicacion.id) { cargarPublicaciones(orden) }
                             }
                         )
-
-
                         binding.rcHomepublicaciones.adapter = adapter
-                        Log.d("HomeAPI", "Publicaciones cargadas: ${publicacionesList.size}")
                     } else {
-                        Log.e("HomeAPI", "Error ${response.code()}: ${response.errorBody()?.string()}")
                         Toast.makeText(this@HomeActivity, "Error al cargar publicaciones", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<List<PublicacionModel>>, t: Throwable) {
-                    Log.e("HomeAPI", "Fallo de conexión: ${t.message}", t)
                     Toast.makeText(this@HomeActivity, "Fallo de red", Toast.LENGTH_SHORT).show()
                 }
             })
     }
 
-    override fun onResume() {
-        super.onResume()
-        cargarPublicaciones()
+    private fun mostrarDialogoEliminar(idPublicacion: Int, onSuccess: () -> Unit) {
+        AlertDialog.Builder(this)
+            .setTitle("¿Eliminar publicación?")
+            .setMessage("Esta acción no se puede deshacer.")
+            .setPositiveButton("Eliminar") { _, _ ->
+                RetrofitClient.instance.eliminarPublicacion(idPublicacion)
+                    .enqueue(object : Callback<ResponseBody> {
+                        override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                            if (response.isSuccessful) {
+                                Toast.makeText(this@HomeActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
+                                onSuccess()
+                            } else {
+                                Toast.makeText(this@HomeActivity, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Toast.makeText(this@HomeActivity, "Fallo de red", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
     }
 
     private fun buscarPublicaciones(query: String) {
@@ -109,38 +137,18 @@ class HomeActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val resultados = response.body() ?: emptyList()
                         adapter = PublicacionAdapter(
-                            publicacionesList,
+                            resultados, // ← aquí estaba el error
                             onItemClick = { publicacion ->
                                 val intent = Intent(this@HomeActivity, PerfilUsuarioActivity::class.java)
                                 intent.putExtra("id_perfil", publicacion.id_usuario)
                                 startActivity(intent)
                             },
                             onDeleteClick = { publicacion ->
-                                AlertDialog.Builder(this@HomeActivity)
-                                    .setTitle("¿Eliminar publicación?")
-                                    .setMessage("Esta acción no se puede deshacer.")
-                                    .setPositiveButton("Eliminar") { _, _ ->
-                                        RetrofitClient.instance.eliminarPublicacion(publicacion.id)
-                                            .enqueue(object : Callback<ResponseBody> {
-                                                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                                                    if (response.isSuccessful) {
-                                                        Toast.makeText(this@HomeActivity, "Publicación eliminada", Toast.LENGTH_SHORT).show()
-                                                        cargarPublicaciones() // 🔄 recargar lista
-                                                    } else {
-                                                        Toast.makeText(this@HomeActivity, "Error al eliminar", Toast.LENGTH_SHORT).show()
-                                                    }
-                                                }
-
-                                                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                                                    Toast.makeText(this@HomeActivity, "Fallo de red", Toast.LENGTH_SHORT).show()
-                                                }
-                                            })
-                                    }
-                                    .setNegativeButton("Cancelar", null)
-                                    .show()
+                                mostrarDialogoEliminar(publicacion.id) {
+                                    buscarPublicaciones(query)
+                                }
                             }
                         )
-
                         binding.rcHomepublicaciones.adapter = adapter
                     } else {
                         Toast.makeText(this@HomeActivity, "Error al buscar", Toast.LENGTH_SHORT).show()
@@ -153,4 +161,8 @@ class HomeActivity : AppCompatActivity() {
             })
     }
 
+    override fun onResume() {
+        super.onResume()
+        cargarPublicaciones()
+    }
 }

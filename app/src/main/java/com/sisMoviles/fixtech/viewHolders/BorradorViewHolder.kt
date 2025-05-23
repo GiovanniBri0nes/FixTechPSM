@@ -7,7 +7,8 @@ import com.sisMoviles.fixtech.modelos.BorradorModel
 
 class BorradorViewHolder(
     view: View,
-    private val onEditarClick: (BorradorModel) -> Unit
+    private val onEditarClick: (BorradorModel) -> Unit,
+    private val onDeleteClick: (BorradorModel) -> Unit
 ) : RecyclerView.ViewHolder(view) {
 
     private val binding = BorradorItemBinding.bind(view)
@@ -16,9 +17,12 @@ class BorradorViewHolder(
         binding.tvBorradorTitulo.text = borradorModel.titulo
         binding.tvBorradorDescripcion.text = borradorModel.descripcion
 
-
         binding.ibBorradorEditar.setOnClickListener {
             onEditarClick(borradorModel)
+        }
+
+        binding.ibBorradorEliminar.setOnClickListener {
+            onDeleteClick(borradorModel)
         }
     }
 }

@@ -16,4 +16,9 @@
     <string name="description">Description</string>
     <string name="btn_addimage">Add image</string>
     <string name="btn_publish">Publish</string>
+    <string-array name="opciones_orden">
+        <item>Más recientes</item>
+        <item>Más antiguos</item>
+    </string-array>
+
 </resources>
